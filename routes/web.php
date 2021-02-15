@@ -27,3 +27,7 @@ Route::get('logout', 'SessionController@destroy')->name('logout');
 
 Route::get('register', 'RegistrationController@create');
 Route::post('register', 'RegistrationController@store');
+
+Route::get('/holis', function(){
+    echo "<h1>hola</h1>";
+});
