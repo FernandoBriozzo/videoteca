@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title') Crear Película @endsection
 @section('content')
-<form method="POST" action="/peliculas">
+<form method="POST">
     {{csrf_field()}}
     <div class="form-group">
         <label for="nombre">Nombre:</label>
@@ -28,8 +28,12 @@
         </select>
     </div>
     <div class="form-group">
+        <label for="imagen">Imagen:</label>
+        <input class="form-control" type="text" name="imagen" id="imagen">
+    </div>
+    <div class="form-group">
         <label for="sinopsis">Sinopsis:</label>
-        <input class="form-control" type="textarea" id="sinposis" name="sinopsis">
+        <input class="form-control" type="textarea" id="sinopsis" name="sinopsis">
     </div>
 
     <div class="from-group">

@@ -28,6 +28,6 @@ Route::get('logout', 'SessionController@destroy')->name('logout');
 Route::get('register', 'RegistrationController@create');
 Route::post('register', 'RegistrationController@store');
 
-Route::get('/holis', function(){
-    echo "<h1>hola</h1>";
-});
+Route::post('directores/create', 'DirectorController@store');
+Route::post('generos/create', 'GeneroController@store');
+Route::post('peliculas/create', 'PeliculaController@store');

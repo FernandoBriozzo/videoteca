@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title') Crear Género @endsection
 @section('content')
-<form method="POST" action="/generos">
+<form method="POST">
     {{csrf_field()}}
     <div class="form-group">
         <label for="nombre">Nombre:</label>

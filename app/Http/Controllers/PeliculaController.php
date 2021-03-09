@@ -36,6 +36,7 @@ class PeliculaController extends Controller
         Pelicula::create([
             'nombre' => $request->nombre,
             'anio' => $request->anio,
+            'imagen' => $request->imagen,
             'genero_id' => $request->genero,
             'director_id' => $request->director,
             'sinopsis' => $request->sinopsis

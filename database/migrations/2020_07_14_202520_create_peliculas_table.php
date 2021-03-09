@@ -16,8 +16,9 @@ class CreatePeliculasTable extends Migration
         Schema::create('peliculas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
-            $table->string('sinopsis');
+            $table->string('sinopsis')->default('sin descripción');
             $table->string('anio');
+            $table->string('imagen')->default('http://placehold.it/200x300');
             $table->unsignedBigInteger('director_id');
             $table->unsignedBigInteger('genero_id');
             $table->timestamps();

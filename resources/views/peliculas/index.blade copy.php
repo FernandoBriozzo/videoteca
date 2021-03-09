@@ -1,29 +1,40 @@
 @extends('layouts.master')
-@section('title') Listado de Directores @endsection
+@section('title') Listado de Películas @endsection
+
 @section('content')
-<a href="directores/create" class="btn btn-primary">Director Nuevo</a>
-<table class="table table-striped table-bordered">
+@if(Auth::check())
+<a href="peliculas/create" class="btn btn-primary">Película Nueva</a>
+@endif
+<table class="table table-bordered table-striped">
     <tr>
         <th>Nombre</th>
+        <th>Año</th>
+        <th>Director</th>
+        <th>Género</th>
+        @if(Auth::check())
         <th>Opciones</th>
+        @endif
     </tr>
-    @foreach($directores as $director)
+    @foreach($peliculas as $pelicula)
     <tr>
-        <td><a href="./directores/{{$director->id}}">{{$director->nombre}}</a></td>
+        <td><a href="./peliculas/{{$pelicula->id}}">{{$pelicula->nombre}}</a></td>
+        <td>{{$pelicula->anio}}</td>
+        <td>{{$pelicula->director}}</td>
+        <td>{{$pelicula->genero}}</td>
+        @if(Auth::check())
         <td>
             <ul class="list-group list-group-horizontal" style="list-style-type:none">
                 <li class="list-item" style="margin-right: 10px;">
-                    <a href="directores/{{$director->id}}/edit" class="btn btn-warning"><svg width="1em" height="1em"
+                    <a href="peliculas/{{$pelicula->id}}/edit" class="btn btn-warning"><svg width="1em" height="1em"
                             viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                             <path fill-rule="evenodd"
                                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                        </svg></a>
-                </li>
+                        </svg></a></li>
                 <li class="list-item">
-                    <form method="POST" action="./directores/{{$director->id}}">
+                    <form method="POST" action="./peliculas/{{$pelicula->id}}">
                         {{csrf_field()}}
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger" onclick="return borrar()"><svg width="1em"
@@ -38,12 +49,13 @@
                 </li>
             </ul>
         </td>
+        @endif
     </tr>
     @endforeach
-    <script>
-        function borrar() {
-            return confirm("Está seguro de borrar el director?");
-        }
-    </script>
 </table>
+<script>
+    function borrar() {
+        return confirm("Está seguro de borrar la película?");
+    }
+</script>
 @endsection

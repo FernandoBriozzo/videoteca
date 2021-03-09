@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title') Crear Película @endsection
 @section('content')
-<form method="POST" action="/directores">
+<form method="POST">
     {{csrf_field()}}
     <div class="form-group">
         <label for="nombre">Nombre:</label>
